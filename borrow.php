@@ -74,6 +74,7 @@ mysqli_close($conn);
     <div class="container">
         <h2>Borrowing Form</h2>
 
+
         <?php if (!empty($errors)): ?>
             <div class="alert alert-error">
                 <?php foreach ($errors as $error): ?>
@@ -87,9 +88,11 @@ mysqli_close($conn);
             <div class="alert alert-success"><?php echo htmlspecialchars($success); ?></div>
         <?php endif; ?>
 
+
         <form action="borrow.php" method="POST">
             <label>Book Title</label>
             <input type="text" name="book-title" class="form-control" value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required>
+
 
             <label>Borrowing Period</label>
             <select name="period" class="form-control" required>
@@ -98,6 +101,7 @@ mysqli_close($conn);
                 <option value="7" <?php echo (isset($period) && $period == 7) ? 'selected' : ''; ?>>7 Days</option>
                 <option value="14" <?php echo (isset($period) && $period == 14) ? 'selected' : ''; ?>>14 Days</option>
             </select>
+
 
             <label>Status</label>
             <select name="status" class="form-control" required>
@@ -109,14 +113,14 @@ mysqli_close($conn);
                 }
                 ?>
             </select>
-            
+
 
             <label>Fine Amount</label>
             <input type="number" name="fine" class="form-control" min="0" value="<?php echo isset($fine) && $fine !== "" ? htmlspecialchars($fine) : '0'; ?>">
 
+
             <button type="submit" class="btn">Save</button>
-            </form>
+        </form>
     </div>
 </body>
 </html>
-
