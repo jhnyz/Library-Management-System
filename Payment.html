@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+</head>
+<body>
+    <form method="POST">
+        <label>Payment Amount</label>
+        <input type="number" name="amount"
+        class="form-control">
+
+        <label>Payment Date</label>
+        <input type="date" name="date"
+        class="form-control">
+
+        <label>Payment Method</label>
+        <select> name="method"
+            class="form-control">
+            <option>Cash</option>
+            <option>Bank Transfer</option>
+            <option>Online Payment</option>
+        </select>
+
+         <button class="btn btn-success mt-3">Add Payment</button>
+    </form>
+</body>
+</html>
