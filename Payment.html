@@ -4,26 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f4f6f9;
+        }
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     <form method="POST">
         <label>Payment Amount</label>
-        <input type="number" name="amount"
-        class="form-control">
+        <input type="number" name="amount" class="form-control">
 
         <label>Payment Date</label>
-        <input type="date" name="date"
-        class="form-control">
+        <input type="date" name="date" class="form-control">
 
         <label>Payment Method</label>
-        <select> name="method"
-            class="form-control">
+        <select name="method" class="form-control">
             <option>Cash</option>
             <option>Bank Transfer</option>
             <option>Online Payment</option>
         </select>
 
-         <button class="btn btn-success mt-3">Add Payment</button>
+        <button class="btn">Add Payment</button>
     </form>
 </body>
 </html>
