@@ -11,7 +11,7 @@
         <input type="text" name = "book-title" class = "form-control">
     
         <label>Borrowing Period</label>
-        <select name = "peiod"
+        <select name = "period"
         class=" form-control">
         <option>3 Days></option>
         <option>7 Days</option>
@@ -21,17 +21,16 @@
         <label>Status</label>
         <select name ="period" 
         class = "form-control">
-    
+        <option>Borrowed</option>
+        <option>Overdue</option>
+        <option>Returned</option>
         </select>
 
-    
+        <label>Fine Amount</label>
+        <input type = "number" name = "fine"
+        class = "form-control">
 
-    
-
-
-</select>
-        
-
+        <button class = "btn btn-primary mt -3">Save</button>
 
     </form>
 </body>
