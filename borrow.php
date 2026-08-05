@@ -27,7 +27,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Please select a valid borrowing period.";
     }
 
-    
+    if (empty($errors)) {
+        $dueDate = date('Y-m-d', strtotime("+{$days} days"));
+
+        $stmt = mysqli_prepare($conn, "INSERT INTO book (title, dl, stat) VALUES (?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, 'sss', $title, $dueDate, $status);
+
+        if (mysqli_stmt_execute($stmt)) {
+            $newBookId = mysqli_insert_id($conn);
+            mysqli_stmt_close($stmt);
+
+            if ($fine > 0) {
+                $stmtFine = mysqli_prepare($conn, "INSERT INTO fine_payments (book_id, payment) VALUES (?, ?)");
+                mysqli_stmt_bind_param($stmtFine, 'ii', $newBookId, $fine);
+
+                if (!mysqli_stmt_execute($stmtFine)) {
+                    $errors[] = "Book recorded, but failed to save fine: " . mysqli_error($conn);
+                }
+                mysqli_stmt_close($stmtFine);
+            }
+
+            if (empty($errors)) {
+                $success = "Book \"" . htmlspecialchars($title) . "\" borrowed successfully! Due date: {$dueDate}.";
+                $title = $period = $status = $fine = "";
+            }
+        } else {
+            $errors[] = "Failed to save book: " . mysqli_error($conn);
+            mysqli_stmt_close($stmt);
+        }
+    }
 }
 
 
