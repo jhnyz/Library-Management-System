@@ -43,5 +43,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     }
 }
 
+$query = "
+    SELECT fp.payment_id, fp.book_id, fp.payment,
+           b.title AS book_title, b.dl AS due_date, b.stat AS status
+    FROM fine_payments fp
+    LEFT JOIN book b ON fp.book_id = b.book_id
+    ORDER BY fp.payment_id DESC
+";
+$result = mysqli_query($conn, $query);
+$fines = [];
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $fines[] = $row;
+    }
+}
 
+$totalFines = 0;
+foreach ($fines as $fine) {
+    $totalFines += $fine['payment'];
+}
+
+mysqli_close($conn);
 ?>
