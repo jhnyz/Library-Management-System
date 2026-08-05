@@ -85,6 +85,23 @@ mysqli_close($conn);
                 <option value="14" <?php echo (isset($period) && $period == 14) ? 'selected' : ''; ?>>14 Days</option>
             </select>
 
+            <label>Status</label>
+            <select name="status" class="form-control" required>
+                <?php
+                $statuses = ['Borrowed', 'Overdue', 'Returned'];
+                foreach ($statuses as $s) {
+                    $sel = (isset($status) && $status === $s) ? 'selected' : '';
+                    echo "<option value=\"{$s}\" {$sel}>{$s}</option>";
+                }
+                ?>
+            </select>
+            
+
+            <label>Fine Amount</label>
+            <input type="number" name="fine" class="form-control" min="0" value="<?php echo isset($fine) && $fine !== "" ? htmlspecialchars($fine) : '0'; ?>">
+
+            <button type="submit" class="btn">Save</button>
+            </form>
     </div>
 </body>
 </html>
