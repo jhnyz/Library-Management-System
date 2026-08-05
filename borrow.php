@@ -73,6 +73,20 @@ mysqli_close($conn);
 <body>
     <div class="container">
         <h2>Borrowing Form</h2>
+
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-error">
+                <?php foreach ($errors as $error): ?>
+                    <div><?php echo htmlspecialchars($error); ?></div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+
+        <?php if (!empty($success)): ?>
+            <div class="alert alert-success"><?php echo htmlspecialchars($success); ?></div>
+        <?php endif; ?>
+
         <form action="borrow.php" method="POST">
             <label>Book Title</label>
             <input type="text" name="book-title" class="form-control" value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required>
