@@ -77,6 +77,14 @@ mysqli_close($conn);
             <label>Book Title</label>
             <input type="text" name="book-title" class="form-control" value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required>
 
+            <label>Borrowing Period</label>
+            <select name="period" class="form-control" required>
+                <option value="">-- Select Period --</option>
+                <option value="3" <?php echo (isset($period) && $period == 3) ? 'selected' : ''; ?>>3 Days</option>
+                <option value="7" <?php echo (isset($period) && $period == 7) ? 'selected' : ''; ?>>7 Days</option>
+                <option value="14" <?php echo (isset($period) && $period == 14) ? 'selected' : ''; ?>>14 Days</option>
+            </select>
+
     </div>
 </body>
 </html>
