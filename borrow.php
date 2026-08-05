@@ -100,7 +100,7 @@ mysqli_close($conn);
                 <option value="3" <?php echo (isset($period) && $period == 3) ? 'selected' : ''; ?>>3 Days</option>
                 <option value="7" <?php echo (isset($period) && $period == 7) ? 'selected' : ''; ?>>7 Days</option>
                 <option value="14" <?php echo (isset($period) && $period == 14) ? 'selected' : ''; ?>>14 Days</option>
-            </select>
+            </select><br><br>
 
 
             <label>Status</label>
@@ -112,14 +112,14 @@ mysqli_close($conn);
                     echo "<option value=\"{$s}\" {$sel}>{$s}</option>";
                 }
                 ?>
-            </select>
+            </select><br><br>
 
 
             <label>Fine Amount</label>
-            <input type="number" name="fine" class="form-control" min="0" value="<?php echo isset($fine) && $fine !== "" ? htmlspecialchars($fine) : '0'; ?>">
+            <input type="number" name="fine" class="form-control" min="0" value="<?php echo isset($fine) && $fine !== "" ? htmlspecialchars($fine) : '0'; ?>"><br><br>
 
 
-            <button type="submit" class="btn">Save</button>
+            <button type="submit" class="btn">Save</button><br><br>
         </form>
     </div>
 </body>
