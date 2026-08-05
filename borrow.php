@@ -62,3 +62,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 mysqli_close($conn);
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrowing Form</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Borrowing Form</h2>
+        <form action="borrow.php" method="POST">
+            <label>Book Title</label>
+            <input type="text" name="book-title" class="form-control" value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required>
+
+    </div>
+</body>
+</html>
+
